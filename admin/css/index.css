@@ -1,0 +1,83 @@
+.layui-logo img{height: 100%;}
+.layui-layout-admin .layui-header{background-color:#2553a0;}
+.layui-nav-tree .layui-nav-child dd.layui-this, .layui-nav-tree .layui-nav-child dd.layui-this a, .layui-nav-tree .layui-this, .layui-nav-tree .layui-this>a, .layui-nav-tree .layui-this>a:hover{background-color:#2c87ff;}
+.layui-side{background-color:#2553a0;}
+.layui-nav{background-color:#2553a0;}
+.layui-nav-bar{background-color:#2553a0;}
+.layui-nav-tree .layui-nav-bar{background-color:#64A7FF;}
+.layui-nav-child dd:hover{background-color:#2c87ff;}
+.layui-nav-item .geren dd>a{text-align: center;width: 100px;}
+
+.layui-body{padding-left: 150px;padding-top:50px ;bottom: 120px!important;}
+/*#demo{width: 1455px;height: 700px;border:1px dashed #ccc;padding: 50px;}
+#demo tr th{width: 150px;height: 30px;text-align: center;border:1px solid #ccc;background: #A4CAFF;}
+#demo tr th:nth-child(1){width: 100px!important;}
+#demo tr td:nth-child(8){width: 450px!important;}
+#demo tr td{width: 150px;height: 30px;text-align: center;border:1px solid #ccc;}*/
+#demo tr td ,#demo tr th {padding: 20px;border:1px solid rgba(0,0,0,0.2);}
+#demo thead tr:first-child {background: #A4CAFF;}	
+#demo {width: 90%;	}
+/* .deme-line{width: 1455px;height: 15px;border-top: 1px solid #ccc;} */
+
+.demo-footer{width: 75%; height: 50px;line-height:50px;border-top: 1px solid #ccc;display: flex;flex-direction: row;flex-wrap: nowrap;justify-content: space-between;}
+
+.demo-footer span{width: 50px;height: 25px;text-align: center;color: #fff;line-height: 25px;}
+.demo-footer span a{display: block;text-align: center;color: #fff;}
+/* ------------------------------------------------------------------------------------------------------------------------------------- */
+
+#demo2{width: 1455px;height: 700px;border:1px dashed #ccc;padding: 50px;}
+
+.demo2-footer{width: 100%;height: 50px;text-align: right;line-height:50px;}
+.demo2-footer span{width: 50px;height: 25px;text-align: center;color: #fff;line-height: 25px;}
+.demo2-footer span a{display: block;text-align: center;color: #fff;}
+
+/* -----------------------------------------------------------demo1-------------------------------------------------------------------------- */
+
+
+
+
+/*#demo1 tr td:nth-child(5){width: 200px!important;}*/
+/*#demo1 tr td:nth-child(6) a{width: 60px;height: 30px;display: block;line-height: 30px;color: #fff;background-color: #008DFF;text-align: center;float: left;margin-left: 15px;}*/
+/*#demo1 tr td{height: 30px;text-align: center;border:1px solid #ccc;}*/
+#demo1 tr td ,#demo1 tr th {border:1px solid rgba(0,0,0,0.2);text-align: center;}
+#demo1 thead tr:first-child {background: #A4CAFF;}	
+#demo1 {width: 90%;	}
+
+.tbfooter{width: 100%;position: fixed;bottom: 50px;}
+
+	
+.layui-btn{
+    width: 90px!important;
+    height: 20px!important;
+    line-height: 20px!important;
+    margin: 1.5px 0 ;
+}
+
+	
+
+/* ------------------------------------------------------user------------------------------------------------------------------------- */
+/* .user-list{width: 1430px;height:850px;} */
+.user-list h1{text-align: center;width: 500px;height: 100px;margin: 0 auto;padding: 20px;font-size: 50px;line-height: 100px;}
+.user-list .u-list{width: 1000px;margin:0 auto; }
+.user-list .u-list .uu-list{border:1px dashed #ccc;display: flex;padding:20px 50px;margin: 0 auto;justify-content: space-between;}
+.user-list .u-list .uu-list tr th{background: skyblue;}
+.user-list .u-list .uu-list tr th,.user-list .u-list .uu-list tr td{border:1px solid #ccc;text-align: center;}
+.xuhao{width: 100px;height: 50px;}
+.td-user{width: 350px;height: 50px;}
+.td-id{width: 550px;height: 50px;}
+.user-footer{width: 500px;height: 100px;margin: 0 auto;padding: 50px 0px;line-height: 100px;text-align: center;}
+.user-footer button{width: 100px;height: 50px;margin:0 auto;background: skyblue;border:#ccc;line-height: 50px;}
+.user-footer button a{color:white;font-size: 25px;}
+.user-footer button a:hover{text-decoration: none;}.user-footer button a:after{border:white;}
+/* -------------------------------------------------------fabu-form------------------------------------------------------------------ */
+.layui-form{margin-top:20px;}
+.layui-form{height: 790px;width: 900px;}
+.layui-input{width: 300px!important;}
+.layui-anim{min-width: 300px!important;}
+.select>.layui-unselect{width: 300px!important;}
+
+/* ---------------------------------------------------------user_x------------------------------------------------------------------------------- */
+.user-list .x-list{width: 1000px;margin:0 auto; text-align: center;}
+.user-list .x-list img{width: 10%;}
+.user-list .x-list .x-user{font-size:20px;margin-top: 50px;margin-bottom: 20px;}
+.user-list .x-list .x-userid{font-size:30px;}

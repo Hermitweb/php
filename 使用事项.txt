@@ -1,0 +1,17 @@
+使用事项：
+	（一）后台的使用：修改配置文件admin/int.php
+			$db_host="localhost";//IP地址
+			$db_user="root";//用户名
+			$db_password="root";//密码
+			$db_name="db_news";//数据库名
+
+
+测试账号：123456  密码：123456
+
+	（二）前端的使用：修改配置文件web/int.php
+			$db_host="localhost";//IP地址
+			$db_user="root";//用户名
+			$db_password="root";//密码
+			$db_name="db_news";//数据库名
+			
+测试账号：123456  密码：123456
