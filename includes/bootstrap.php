@@ -43,5 +43,5 @@ if (!defined('APP_VERSION')) {
     define('APP_VERSION', '1.2.0');
 }
 if (!defined('APP_NAME')) {
-    define('APP_NAME', 'PHP新闻管理系统');
+    define('APP_NAME', 'News Platform');
 }

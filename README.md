@@ -1,17 +1,17 @@
-# PHP新闻管理系统
+# News Platform
 
-[![版本](https://img.shields.io/badge/版本-1.2.0--dev-blue.svg)](https://github.com/yourusername/php-news-system)
+[![版本](https://img.shields.io/badge/版本-1.2.0-blue.svg)](https://github.com/Hermitweb/php)
 [![许可证](https://img.shields.io/badge/许可证-MIT-green.svg)](LICENSE)
-[![PHP版本](https://img.shields.io/badge/PHP-7.4%2B-purple.svg)](https://www.php.net/)
-[![MySQL版本](https://img.shields.io/badge/MySQL-5.7%2B-orange.svg)](https://www.mysql.com/)
+[![PHP版本](https://img.shields.io/badge/PHP-8.2%2B-purple.svg)](https://www.php.net/)
+[![MySQL版本](https://img.shields.io/badge/MySQL-8.0%2B-orange.svg)](https://www.mysql.com/)
 
-一个基于PHP+MySQL的新闻内容管理系统，包含前台展示和后台管理功能。
+一个基于PHP+MySQL的现代化新闻内容管理平台，包含前台展示和后台管理功能。
 
 ## 📋 版本信息
 
-- **当前版本**: 1.2.0-dev (开发版)
+- **当前版本**: 1.2.0
 - **稳定版本**: 1.0.0 (已封存)
-- **发布日期**: 2021-01-08
+- **发布日期**: 2026-06-23
 - **最后更新**: 2026-06-23
 
 查看完整的版本更新历史：[CHANGELOG.md](CHANGELOG.md)
@@ -238,13 +238,13 @@ php/
 
 如有问题或建议，请通过以下方式联系：
 
-- 📧 Email: admin@php-news-system.com
+- 📧 Email: admin@news-platform.com
 - 🐛 GitHub Issues: 提交问题报告
 - 💬 项目文档: 查看详细说明
 
 ## 🎯 开发计划
 
-### v1.2.0 (开发中)
+### v1.2.0 (已发布)
 - ✅ 模拟数据库支持
 - ✅ Docker容器化部署
 - ✅ 完善项目文档
@@ -261,4 +261,4 @@ php/
 
 ---
 
-**感谢使用PHP新闻管理系统！** 🎉
+**感谢使用News Platform！** 🎉

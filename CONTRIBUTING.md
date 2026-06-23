@@ -1,6 +1,6 @@
 # 贡献指南 (CONTRIBUTING)
 
-感谢你考虑为PHP新闻管理系统做出贡献！
+感谢你考虑为News Platform做出贡献！
 
 ## 如何贡献
 

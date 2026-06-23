@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# PHP新闻管理系统部署脚本 v1.2
+# News Platform部署脚本 v1.2
 # 用法: ./deploy.sh [dev|prod]
 #
 
@@ -11,7 +11,7 @@ APP_DIR=$(cd "$(dirname "$0")" && pwd)
 BACKUP_DIR="$APP_DIR/backups/$(date +%Y%m%d_%H%M%S)"
 
 echo "========================================"
-echo "  PHP新闻管理系统 v1.2 部署脚本"
+echo "  News Platform v1.2 部署脚本"
 echo "========================================"
 echo ""
 echo "环境: $ENV"
