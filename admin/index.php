@@ -1,15 +1,20 @@
 <?php
-  include_once("int.php");
+  require_once("int.php");
+  // 验证登录
+  if (!defined('SKIP_AUTH_CHECK')) {
+    Security::requireLogin('log/login.php');
+  }
+
   //读取分类列表
-  
+
   $count =  get_rows('wen',$where=" 1 "); //数据总数
   $page_size = 10; //每页显示多少条记录
 
   $page = empty($_GET['page'])?1:$_GET['page'];
- 
+
   $page = !is_numeric($page)?1:$page ; //判断一个数是否是整数
 
-  
+
 
   $pages = ceil($count/$page_size);
 
@@ -83,7 +88,7 @@
             <td><?php  echo $value['user'] ?></td>
             <td><?php  echo $value['title'] ?></td>
             <td><input type="text" value="<?php echo $value['jianjie']?>" style="border:none;"></td>
-            <td><input type="text" value="<?php  echo $value['images']?>" style="border:none;"></td>
+            <td><input type="text" value="<?php  echo $value['image']?>" style="border:none;"></td>
             <td><?php  echo $value['leibie'] ?></td>
             <td><?php  echo $value['regtime']?></td>
             
