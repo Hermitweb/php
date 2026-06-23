@@ -1,0 +1,393 @@
+/* Profile & Settings Page Styles */
+
+/* 警告提示 */
+.alert {
+  padding: 12px 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+.alert-success {
+  background: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-error {
+  background: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* 个人中心头部 */
+.profile-header {
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.profile-cover {
+  height: 120px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+}
+
+.profile-cover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background: linear-gradient(to top, rgba(255,255,255,1), rgba(255,255,255,0));
+}
+
+.profile-info {
+  display: flex;
+  align-items: flex-end;
+  padding: 0 30px 24px;
+  margin-top: -40px;
+  position: relative;
+}
+
+.profile-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background: #fff;
+  border: 4px solid #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #667eea;
+  font-size: 40px;
+  flex-shrink: 0;
+}
+
+.profile-detail {
+  margin-left: 20px;
+  flex: 1;
+  padding-bottom: 8px;
+}
+
+.profile-detail h2 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 8px 0;
+}
+
+.profile-detail p {
+  margin: 4px 0;
+  color: #6c757d;
+  font-size: 13px;
+}
+
+.profile-detail p i {
+  width: 16px;
+  margin-right: 4px;
+  color: #667eea;
+}
+
+.profile-stats {
+  display: flex;
+  gap: 30px;
+  padding-bottom: 8px;
+}
+
+.profile-stat-item {
+  text-align: center;
+}
+
+.profile-stat-value {
+  font-size: 22px;
+  font-weight: 700;
+  color: #667eea;
+  line-height: 1.2;
+}
+
+.profile-stat-label {
+  font-size: 12px;
+  color: #6c757d;
+  margin-top: 2px;
+}
+
+/* 表单 */
+.profile-form,
+.password-form {
+  max-width: 500px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #495057;
+  margin-bottom: 6px;
+}
+
+.form-group label i {
+  color: #667eea;
+  margin-right: 4px;
+  width: 16px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  transition: all 0.3s;
+  background: #fff;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.form-group input:disabled {
+  background: #f8f9fa;
+  color: #6c757d;
+  cursor: not-allowed;
+}
+
+.form-group small {
+  display: block;
+  margin-top: 4px;
+  font-size: 12px;
+  color: #adb5bd;
+}
+
+.form-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.submit-btn {
+  padding: 10px 24px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.reset-form-btn {
+  padding: 10px 24px;
+  background: #f8f9fa;
+  color: #6c757d;
+  border: 1px solid #e9ecef;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.reset-form-btn:hover {
+  background: #e9ecef;
+  color: #495057;
+}
+
+/* 安全项 */
+.security-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid #f0f0f0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  transition: all 0.3s;
+}
+
+.security-item:hover {
+  border-color: #667eea;
+  background: #f8f9ff;
+}
+
+.security-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  margin-right: 16px;
+  flex-shrink: 0;
+}
+
+.security-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.security-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 2px;
+}
+
+.security-desc {
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.security-action {
+  padding: 6px 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.security-action:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+  color: #fff;
+}
+
+/* 系统信息 */
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.info-item {
+  padding: 16px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  border-radius: 8px;
+  border-left: 4px solid #667eea;
+}
+
+.info-label {
+  font-size: 12px;
+  color: #6c757d;
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 16px;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+/* 系统操作 */
+.op-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.op-item {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  text-decoration: none;
+  color: #495057;
+  transition: all 0.3s;
+  border: 1px solid transparent;
+}
+
+.op-item:hover {
+  background: #fff;
+  border-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  color: #495057;
+}
+
+.op-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 18px;
+  margin-right: 14px;
+  flex-shrink: 0;
+}
+
+.op-title {
+  font-size: 15px;
+  font-weight: 600;
+  color: #2c3e50;
+  margin-bottom: 2px;
+}
+
+.op-desc {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+/* 响应式 */
+@media (max-width: 768px) {
+  .profile-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 0 20px 20px;
+  }
+
+  .profile-detail {
+    margin: 16px 0 0 0;
+  }
+
+  .profile-stats {
+    margin-top: 16px;
+  }
+
+  .info-grid,
+  .op-grid {
+    grid-template-columns: 1fr;
+  }
+}
