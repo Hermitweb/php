@@ -181,8 +181,18 @@ class Security {
      * @param string $redirect 登录后跳转的URL
      */
     public static function requireLogin($redirect = 'log/login.php') {
+        // 如果是登录页面，跳过检查（避免重定向循环）
+        $currentPage = basename($_SERVER['SCRIPT_NAME']);
+        if ($currentPage === 'login.php') {
+            return;
+        }
+
         if (!self::isLoggedIn()) {
-            header('Location: ' . $redirect);
+            // 获取当前脚本的目录
+            $scriptDir = dirname($_SERVER['SCRIPT_NAME']);
+            // 构建绝对路径的重定向URL
+            $redirectUrl = rtrim($scriptDir, '/') . '/' . ltrim($redirect, '/');
+            header('Location: ' . $redirectUrl);
             exit;
         }
     }
