@@ -10,10 +10,16 @@ $adminCount = get_rows('admin', ' 1 ');
 // 分类统计
 $categories = [];
 $catSql = "SELECT leibie, COUNT(*) as count FROM " . PRE . "wen GROUP BY leibie";
-$catQuery = mysqli_query($GLOBALS['link'], $catSql);
+$catQuery = function_exists('mysqli_query') && isset($GLOBALS['link']) ? mysqli_query($GLOBALS['link'], $catSql) : null;
 if ($catQuery) {
     while ($row = mysqli_fetch_assoc($catQuery)) {
         $categories[$row['leibie']] = $row['count'];
+    }
+} else {
+    $allArticles = getList('wen', ' 1 ', 1000, 0);
+    foreach ($allArticles as $article) {
+        $cat = $article['leibie'] ?? '未分类';
+        $categories[$cat] = ($categories[$cat] ?? 0) + 1;
     }
 }
 
@@ -23,10 +29,22 @@ $recentArticles = getList('wen', ' 1 ', 7, 0);
 // 按用户统计
 $userStats = [];
 $userSql = "SELECT user, COUNT(*) as count FROM " . PRE . "wen GROUP BY user ORDER BY count DESC LIMIT 5";
-$userQuery = mysqli_query($GLOBALS['link'], $userSql);
+$userQuery = function_exists('mysqli_query') && isset($GLOBALS['link']) ? mysqli_query($GLOBALS['link'], $userSql) : null;
 if ($userQuery) {
     while ($row = mysqli_fetch_assoc($userQuery)) {
         $userStats[] = $row;
+    }
+} else {
+    $userArticleCounts = [];
+    $allArticles = getList('wen', ' 1 ', 1000, 0);
+    foreach ($allArticles as $article) {
+        $user = $article['user'] ?? '未知';
+        $userArticleCounts[$user] = ($userArticleCounts[$user] ?? 0) + 1;
+    }
+    arsort($userArticleCounts);
+    $userArticleCounts = array_slice($userArticleCounts, 0, 5, true);
+    foreach ($userArticleCounts as $user => $count) {
+        $userStats[] = ['user' => $user, 'count' => $count];
     }
 }
 

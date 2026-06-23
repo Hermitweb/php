@@ -897,3 +897,391 @@
     height: 40px;
   }
 }
+
+/* 面包屑导航 */
+.breadcrumb-section {
+  background: #f8f9fa;
+  padding: 12px 0;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.breadcrumb-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+}
+
+.breadcrumb-nav a {
+  color: #667eea;
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.breadcrumb-nav a:hover {
+  color: #764ba2;
+}
+
+.breadcrumb-nav .separator {
+  color: #adb5bd;
+}
+
+.breadcrumb-nav span:last-child {
+  color: #2c3e50;
+  font-weight: 500;
+}
+
+/* 列表页面样式 */
+.list-section {
+  padding: 60px 0;
+}
+
+.article-count {
+  font-size: 14px;
+  color: #6c757d;
+  font-weight: normal;
+}
+
+.list-article {
+  display: flex;
+  gap: 20px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  transition: all 0.3s;
+}
+
+.list-article:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.list-article .article-image {
+  width: 200px;
+  height: 150px;
+  border-radius: 8px;
+  overflow: hidden;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.list-article .article-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.list-article .article-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-article .article-title {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  line-height: 1.4;
+}
+
+.list-article .article-title a {
+  color: #2c3e50;
+  text-decoration: none;
+}
+
+.list-article .article-title a:hover {
+  color: #667eea;
+}
+
+.list-article .article-excerpt {
+  color: #6c757d;
+  font-size: 14px;
+  line-height: 1.6;
+  margin: 0 0 12px 0;
+  flex: 1;
+}
+
+.list-article .article-meta {
+  display: flex;
+  gap: 20px;
+  font-size: 12px;
+  color: #adb5bd;
+}
+
+.list-article .article-meta i {
+  margin-right: 4px;
+}
+
+.load-more-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 16px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  margin-top: 20px;
+}
+
+.load-more-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+}
+
+.load-more-btn i {
+  margin-right: 8px;
+}
+
+.subscribe-card {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+  color: #fff;
+}
+
+.subscribe-card h3 {
+  color: #fff !important;
+  border-bottom-color: rgba(255,255,255,0.2) !important;
+}
+
+.subscribe-card p {
+  color: rgba(255,255,255,0.9) !important;
+}
+
+.subscribe-card .subscribe-form {
+  max-width: 100%;
+  margin: 0;
+}
+
+/* 分类页面样式 */
+.category-tabs-section {
+  background: #fff;
+  border-bottom: 1px solid #e9ecef;
+  padding: 16px 0;
+}
+
+.category-tabs .nav-tabs {
+  border: none;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.category-tabs .nav-item {
+  margin-bottom: 0;
+}
+
+.category-tabs .nav-link {
+  border: none;
+  background: #f8f9fa;
+  color: #495057;
+  padding: 12px 24px;
+  border-radius: 25px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.category-tabs .nav-link:hover {
+  background: #e9ecef;
+}
+
+.category-tabs .nav-link.active {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+}
+
+.category-content {
+  padding: 60px 0;
+}
+
+.empty-state {
+  text-align: center;
+  padding: 60px 0;
+  color: #adb5bd;
+}
+
+.empty-state i {
+  font-size: 48px;
+  margin-bottom: 16px;
+  color: #dee2e6;
+}
+
+.empty-state p {
+  margin: 0;
+}
+
+/* 联系页面样式 */
+.contact-section {
+  padding: 60px 0;
+}
+
+.contact-section .section-header {
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.contact-info-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+  transition: all 0.3s;
+}
+
+.contact-info-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+}
+
+.contact-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 28px;
+}
+
+.contact-info-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 12px 0;
+}
+
+.contact-info-card p {
+  color: #6c757d;
+  font-size: 14px;
+  margin: 4px 0;
+}
+
+.contact-form-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.contact-form-card h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #2c3e50;
+  margin: 0 0 24px 0;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.contact-form-card h3 i {
+  color: #667eea;
+}
+
+.contact-form-card .form-group {
+  margin-bottom: 20px;
+}
+
+.contact-form-card label {
+  font-weight: 600;
+  color: #495057;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.contact-form-card label i {
+  color: #667eea;
+}
+
+.contact-form-card .form-control {
+  border: 2px solid #e9ecef;
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-size: 14px;
+  transition: all 0.3s;
+}
+
+.contact-form-card .form-control:focus {
+  outline: none;
+  border-color: #667eea;
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.contact-form-card textarea.form-control {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.contact-form-card .btn-primary {
+  width: 100%;
+  margin: 0;
+  justify-content: center;
+}
+
+.map-section {
+  margin-top: 40px;
+}
+
+.map-container {
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.map-placeholder {
+  height: 350px;
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #6c757d;
+}
+
+.map-placeholder i {
+  font-size: 56px;
+  margin-bottom: 16px;
+  color: #adb5bd;
+}
+
+.map-placeholder p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+  .list-article {
+    flex-direction: column;
+  }
+  
+  .list-article .article-image {
+    width: 100%;
+    height: 200px;
+  }
+  
+  .category-tabs .nav-link {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  .contact-form-card {
+    padding: 20px;
+  }
+}

@@ -140,4 +140,72 @@ function get_rows($table, $where = ' 1 ') {
     global $mockDB;
     return $mockDB->get_rows($table, $where);
 }
+
+// 模拟mysqli函数，用于兼容旧代码
+if (!function_exists('mysqli_query')) {
+    class MockMySQLiResult {
+        private $data = [];
+        private $index = 0;
+        
+        public function __construct($data) {
+            $this->data = $data;
+            $this->index = 0;
+        }
+        
+        public function fetch_assoc() {
+            if ($this->index < count($this->data)) {
+                return $this->data[$this->index++];
+            }
+            return null;
+        }
+        
+        public function num_rows() {
+            return count($this->data);
+        }
+    }
+    
+    function mysqli_query($link, $sql) {
+        global $mockDB;
+        
+        // 解析SQL查询
+        preg_match('/SELECT\s+(.+?)\s+FROM\s+(\w+)(?:\s+WHERE\s+(.+?))?(?:\s+GROUP\s+BY\s+(.+?))?/i', $sql, $matches);
+        
+        if (empty($matches)) {
+            return new MockMySQLiResult([]);
+        }
+        
+        $table = str_replace(PRE, '', $matches[2] ?? '');
+        
+        if (!isset($mockDB->data[$table])) {
+            return new MockMySQLiResult([]);
+        }
+        
+        $data = $mockDB->data[$table];
+        
+        // 简单的 GROUP BY 处理
+        if (!empty($matches[4])) {
+            $groupBy = trim($matches[4]);
+            $result = [];
+            foreach ($data as $row) {
+                if (isset($row[$groupBy])) {
+                    $key = $row[$groupBy];
+                    if (!isset($result[$key])) {
+                        $result[$key] = ['leibie' => $key, 'count' => 0];
+                    }
+                    $result[$key]['count']++;
+                }
+            }
+            return new MockMySQLiResult(array_values($result));
+        }
+        
+        return new MockMySQLiResult($data);
+    }
+    
+    function mysqli_fetch_assoc($result) {
+        if ($result instanceof MockMySQLiResult) {
+            return $result->fetch_assoc();
+        }
+        return null;
+    }
+}
 ?>

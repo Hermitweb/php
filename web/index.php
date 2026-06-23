@@ -9,6 +9,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
+    <base href="/web/">
     <title>News Platform - 现代化新闻资讯平台</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="News Platform - 您的新闻资讯首选平台">

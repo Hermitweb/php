@@ -13,10 +13,21 @@
   // 分类统计
   $categories = [];
   $catSql = "SELECT leibie, COUNT(*) as count FROM " . PRE . "wen GROUP BY leibie";
-  $catQuery = mysqli_query($GLOBALS['link'], $catSql);
+  // 使用模拟数据库查询
+  $catQuery = function_exists('mysqli_query') && isset($GLOBALS['link']) ? mysqli_query($GLOBALS['link'], $catSql) : null;
   if ($catQuery) {
     while ($row = mysqli_fetch_assoc($catQuery)) {
       $categories[$row['leibie']] = $row['count'];
+    }
+  } else {
+    // 使用模拟数据统计分类
+    $allArticles = getList('wen', ' 1 ', 1000, 0);
+    foreach ($allArticles as $article) {
+      $cat = $article['leibie'] ?? '未分类';
+      if (!isset($categories[$cat])) {
+        $categories[$cat] = 0;
+      }
+      $categories[$cat]++;
     }
   }
 

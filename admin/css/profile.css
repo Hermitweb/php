@@ -1,9 +1,29 @@
-/* Profile & Settings Page Styles */
+/* Profile & Settings Styles - News Platform */
+
+:root {
+  --primary-color: #667eea;
+  --primary-dark: #764ba2;
+  --success-color: #43e97b;
+  --warning-color: #fa709a;
+  --info-color: #4facfe;
+  --danger-color: #f5576c;
+  --text-primary: #2c3e50;
+  --text-secondary: #495057;
+  --text-muted: #6c757d;
+  --bg-light: #f8f9fa;
+  --border-color: #e9ecef;
+  --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-lg: 0 8px 24px rgba(0,0,0,0.12);
+  --radius-sm: 6px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+}
 
 /* 警告提示 */
 .alert {
-  padding: 12px 20px;
-  border-radius: 8px;
+  padding: 14px 20px;
+  border-radius: var(--radius-md);
   margin-bottom: 20px;
   display: flex;
   align-items: center;
@@ -12,7 +32,7 @@
 }
 
 .alert i {
-  margin-right: 8px;
+  margin-right: 10px;
   font-size: 16px;
 }
 
@@ -28,18 +48,30 @@
   border: 1px solid #f5c6cb;
 }
 
+.alert-info {
+  background: #d1ecf1;
+  color: #0c5460;
+  border: 1px solid #bee5eb;
+}
+
+.alert-warning {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+}
+
 /* 个人中心头部 */
 .profile-header {
   background: #fff;
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   overflow: hidden;
   margin-bottom: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .profile-cover {
   height: 120px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   position: relative;
 }
 
@@ -71,7 +103,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #667eea;
+  color: var(--primary-color);
   font-size: 40px;
   flex-shrink: 0;
 }
@@ -85,20 +117,20 @@
 .profile-detail h2 {
   font-size: 24px;
   font-weight: 700;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin: 0 0 8px 0;
 }
 
 .profile-detail p {
   margin: 4px 0;
-  color: #6c757d;
+  color: var(--text-muted);
   font-size: 13px;
 }
 
 .profile-detail p i {
   width: 16px;
   margin-right: 4px;
-  color: #667eea;
+  color: var(--primary-color);
 }
 
 .profile-stats {
@@ -114,13 +146,13 @@
 .profile-stat-value {
   font-size: 22px;
   font-weight: 700;
-  color: #667eea;
+  color: var(--primary-color);
   line-height: 1.2;
 }
 
 .profile-stat-label {
   font-size: 12px;
-  color: #6c757d;
+  color: var(--text-muted);
   margin-top: 2px;
 }
 
@@ -137,14 +169,14 @@
 .form-group label {
   display: block;
   font-size: 14px;
-  font-weight: 500;
-  color: #495057;
-  margin-bottom: 6px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin-bottom: 8px;
 }
 
 .form-group label i {
-  color: #667eea;
-  margin-right: 4px;
+  color: var(--primary-color);
+  margin-right: 6px;
   width: 16px;
 }
 
@@ -152,9 +184,9 @@
 .form-group select,
 .form-group textarea {
   width: 100%;
-  padding: 10px 14px;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
+  padding: 12px 14px;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
   font-size: 14px;
   transition: all 0.3s;
   background: #fff;
@@ -164,19 +196,19 @@
 .form-group select:focus,
 .form-group textarea:focus {
   outline: none;
-  border-color: #667eea;
+  border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
 .form-group input:disabled {
-  background: #f8f9fa;
-  color: #6c757d;
+  background: var(--bg-light);
+  color: var(--text-muted);
   cursor: not-allowed;
 }
 
 .form-group small {
   display: block;
-  margin-top: 4px;
+  margin-top: 6px;
   font-size: 12px;
   color: #adb5bd;
 }
@@ -189,10 +221,10 @@
 
 .submit-btn {
   padding: 10px 24px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: #fff;
   border: none;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
@@ -209,10 +241,10 @@
 
 .reset-form-btn {
   padding: 10px 24px;
-  background: #f8f9fa;
-  color: #6c757d;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
+  background: var(--bg-light);
+  color: var(--text-muted);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
   font-size: 14px;
   cursor: pointer;
   transition: all 0.3s;
@@ -222,8 +254,8 @@
 }
 
 .reset-form-btn:hover {
-  background: #e9ecef;
-  color: #495057;
+  background: var(--border-color);
+  color: var(--text-secondary);
 }
 
 /* 安全项 */
@@ -232,20 +264,20 @@
   align-items: center;
   padding: 16px;
   border: 1px solid #f0f0f0;
-  border-radius: 8px;
+  border-radius: var(--radius-md);
   margin-bottom: 12px;
   transition: all 0.3s;
 }
 
 .security-item:hover {
-  border-color: #667eea;
+  border-color: var(--primary-color);
   background: #f8f9ff;
 }
 
 .security-icon {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -263,20 +295,20 @@
 .security-title {
   font-size: 15px;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 2px;
 }
 
 .security-desc {
   font-size: 13px;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 .security-action {
   padding: 6px 16px;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
   color: #fff;
-  border-radius: 6px;
+  border-radius: var(--radius-sm);
   text-decoration: none;
   font-size: 13px;
   font-weight: 500;
@@ -292,20 +324,20 @@
 /* 系统信息 */
 .info-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 16px;
 }
 
 .info-item {
   padding: 16px;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-  border-radius: 8px;
-  border-left: 4px solid #667eea;
+  background: var(--bg-light);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary-color);
 }
 
 .info-label {
   font-size: 12px;
-  color: #6c757d;
+  color: var(--text-muted);
   margin-bottom: 4px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
@@ -314,7 +346,7 @@
 .info-value {
   font-size: 16px;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
 }
 
 /* 系统操作 */
@@ -328,26 +360,26 @@
   display: flex;
   align-items: center;
   padding: 16px;
-  background: #f8f9fa;
-  border-radius: 10px;
+  background: var(--bg-light);
+  border-radius: var(--radius-md);
   text-decoration: none;
-  color: #495057;
+  color: var(--text-secondary);
   transition: all 0.3s;
   border: 1px solid transparent;
 }
 
 .op-item:hover {
   background: #fff;
-  border-color: #e9ecef;
+  border-color: var(--border-color);
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-  color: #495057;
+  box-shadow: var(--shadow-md);
+  color: var(--text-secondary);
 }
 
 .op-icon {
   width: 44px;
   height: 44px;
-  border-radius: 10px;
+  border-radius: var(--radius-md);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -360,13 +392,13 @@
 .op-title {
   font-size: 15px;
   font-weight: 600;
-  color: #2c3e50;
+  color: var(--text-primary);
   margin-bottom: 2px;
 }
 
 .op-desc {
   font-size: 12px;
-  color: #6c757d;
+  color: var(--text-muted);
 }
 
 /* 响应式 */
@@ -389,5 +421,15 @@
   .info-grid,
   .op-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .form-actions {
+    flex-direction: column;
+  }
+  
+  .submit-btn,
+  .reset-form-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

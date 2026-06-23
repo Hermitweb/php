@@ -1,392 +1,264 @@
 <?php
     include_once('int.php');
-    //读取文章列表
-    //$list = getList('wen',$where=' pinglun = 1 and status = 1 ',$limit=3,$offset=0);
-    $list1 = getList('wen',$where=" pinglun= 1 and leibie='政治'");
-    $list2 = getList('wen',$where=" pinglun= 1 and leibie='经济'");
-    $list3 = getList('wen',$where=" pinglun= 1 and leibie='法律'");
-    $list4 = getList('wen',$where=" pinglun= 1 and leibie='军事'");
-    $list5 = getList('wen',$where=" pinglun= 1 and leibie='科技'");
-    $list6 = getList('wen',$where=" pinglun= 1 and leibie='文教'");
-    $list7 = getList('wen',$where=" pinglun= 1 and leibie='体育'");
-    $list8 = getList('wen',$where=" pinglun= 1 and leibie='社会'");
+    $categories = [
+        ['id' => 'zhengzhi', 'name' => '政治', 'icon' => 'fas fa-landmark'],
+        ['id' => 'jingji', 'name' => '经济', 'icon' => 'fas fa-chart-line'],
+        ['id' => 'falu', 'name' => '法律', 'icon' => 'fas fa-gavel'],
+        ['id' => 'junshi', 'name' => '军事', 'icon' => 'fas fa-shield-alt'],
+        ['id' => 'keji', 'name' => '科技', 'icon' => 'fas fa-microchip'],
+        ['id' => 'wenjiao', 'name' => '文教', 'icon' => 'fas fa-book-open'],
+        ['id' => 'tiyu', 'name' => '体育', 'icon' => 'fas fa-trophy'],
+        ['id' => 'shehui', 'name' => '社会', 'icon' => 'fas fa-users'],
+    ];
 ?>
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>分类</title>
+    <base href="/web/">
+    <title>新闻分类 - News Platform</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="News Platform - 新闻资讯分类">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700|Roboto+Slab:300,400,700" rel="stylesheet">
-    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/home-modern.css">
 </head>
-
 <body>
+    <!-- 顶部公告栏 -->
+    <div class="top-bar">
+        <div class="container">
+            <div class="top-bar-content">
+                <span><i class="fas fa-bullhorn"></i> 欢迎访问 News Platform，您的新闻资讯首选平台</span>
+                <div class="top-bar-links">
+                    <a href="#"><i class="fas fa-envelope"></i> 订阅</a>
+                    <a href="#"><i class="fas fa-user"></i> 登录</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 导航栏 -->
     <header>
-       <div class="main-menu">
+        <div class="main-menu">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="#"><img src="images/logo.png" alt="logo"></a>
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <a class="navbar-brand" href="index.php">
+                        <i class="fas fa-newspaper"></i>
+                        <span>News Platform</span>
+                    </a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav ml-auto">
-                            <li class="nav-item ">
-                                <a href="index.php" class="nav-link">首页</a>
+                            <li class="nav-item">
+                                <a href="index.php" class="nav-link"><i class="fas fa-home"></i> 首页</a>
                             </li>
-                            <li class="navbar-item">
-                                <a href="list.php" class="nav-link">列表</a>
+                            <li class="nav-item">
+                                <a href="list.php" class="nav-link"><i class="fas fa-list"></i> 资讯列表</a>
                             </li>
-                            <li class="navbar-item">
-                                <a href="category.php" class="nav-link active1">分类</a>
+                            <li class="nav-item active">
+                                <a href="category.php" class="nav-link"><i class="fas fa-th-large"></i> 分类</a>
                             </li>
-                            
-                            <li class="navbar-item">
-                                <a href="contact.php" class="nav-link">联系我们</a>
+                            <li class="nav-item">
+                                <a href="contact.php" class="nav-link"><i class="fas fa-phone"></i> 联系我们</a>
                             </li>
-                           
-                            <?php
-                                include_once("nav.php");
-                            ?>
                         </ul>
-                        <form class="form-inline my-2 my-lg-0">
-                            <input class="form-control mr-sm-2" type="search" placeholder="请在这里键入您的搜索..." aria-label="Search">
-                            <span class="fa fa-search"></span>
+                        <form class="form-inline my-2 my-lg-0 search-form" method="get" action="list.php">
+                            <input class="form-control" type="search" name="search" placeholder="搜索新闻...">
+                            <button type="submit"><i class="fas fa-search"></i></button>
                         </form>
                     </div>
                 </nav>
             </div>
         </div>
     </header>
-    <div class="bread-crome">
-            <div class="lei">
-                <ul class="nav nav-tabs" role="tablist">
-                    <li role="presentation" class="active bg"><a href="#zhengzhi" aria-controls="home" role="tab" data-toggle="tab">政治</a></li>
-                    <li role="presentation" class=""><a href="#jingji" aria-controls="profile" role="tab" data-toggle="tab">经济</a></li>
-                    <li role="presentation" class=""><a href="#falu" aria-controls="messages" role="tab" data-toggle="tab">法律</a></li>
-                    <li role="presentation" class=""><a href="#junshi" aria-controls="settings" role="tab" data-toggle="tab">军事</a></li>
-                    <li role="presentation" class=""><a href="#keji" aria-controls="settings" role="tab" data-toggle="tab">科技</a></li>
-                    <li role="presentation" class=""><a href="#wenjiao" aria-controls="settings" role="tab" data-toggle="tab">文教</a></li>
-                    <li role="presentation" class=""><a href="#tiyu" aria-controls="settings" role="tab" data-toggle="tab">体育</a></li>
-                    <li role="presentation" class=""><a href="#shehui" aria-controls="settings" role="tab" data-toggle="tab">社会</a></li>
+
+    <!-- 面包屑导航 -->
+    <div class="breadcrumb-section">
+        <div class="container">
+            <nav class="breadcrumb-nav">
+                <a href="index.php"><i class="fas fa-home"></i> 首页</a>
+                <span class="separator">/</span>
+                <span>分类</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- 分类导航标签 -->
+    <section class="category-tabs-section">
+        <div class="container">
+            <div class="category-tabs">
+                <ul class="nav nav-tabs">
+                    <?php foreach ($categories as $cat): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#<?php echo $cat['id']; ?>" data-toggle="tab">
+                            <i class="<?php echo $cat['icon']; ?>"></i>
+                            <?php echo $cat['name']; ?>
+                        </a>
+                    </li>
+                    <?php endforeach; ?>
                 </ul>
             </div>
-    </div>
-    <section class="blog-sec">
-        <div class="container tab-content">
-            <div class="main-content tab-pane active" id="zhengzhi">
-                <h1>政治</h1>
-
-
-                <?php foreach ($list1 as $key1 => $value1) { ?>
-
-                <div class="post_item">
-                    <img src="images/blog1.jpg" alt="blog">
-                    <a href="category.php" class="category-ttl"><?php echo $value1['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value1['id']; ?>"><?php echo $value1['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value1['user']; ?> </a></li>
-                        <li class="date"><?php echo $value1['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value1['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-            </div>
-            <div class="main-content tab-pane" id="jingji">
-                <h1>经济</h1>
-
-
-                <?php foreach ($list2 as $key2 => $value2) { ?>
-
-                <div class="post_item">
-                        <img src="images/blog1.jpg" alt="blog">
-                        <a href="category.php" class="category-ttl"><?php echo $value2['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value2['id']; ?>"><?php echo $value2['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value2['user']; ?> </a></li>
-                        <li class="date"><?php echo $value2['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value2['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-
-            </div>
-            <div class="main-content tab-pane" id="falu">
-                <h1>法律</h1>
-
-
-
-                <?php foreach ($list3 as $key2 => $value3) { ?>
-
-                <div class="post_item">
-                        <img src="images/blog1.jpg" alt="blog">
-                        <a href="category.php" class="category-ttl"><?php echo $value3['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value3['id']; ?>"><?php echo $value3['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value3['user']; ?> </a></li>
-                        <li class="date"><?php echo $value3['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value3['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-                
-
-
-
-            </div>
-            <div class="main-content tab-pane" id="junshi">
-                <h1>军事</h1>
-
-
-                <?php foreach ($list4 as $key4 => $value4) { ?>
-
-                <div class="post_item">
-                        <img src="images/blog1.jpg" alt="blog">
-                        <a href="category.php" class="category-ttl"><?php echo $value4['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value4['id']; ?>"><?php echo $value4['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value4['user']; ?> </a></li>
-                        <li class="date"><?php echo $value4['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value4['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-
-
-            </div>
-            <div class="main-content tab-pane" id="keji">
-                <h1>科技</h1>
-
-
-                <?php foreach ($list5 as $key5 => $value5) { ?>
-
-                <div class="post_item">
-                        <img src="images/blog1.jpg" alt="blog">
-                        <a href="category.php" class="category-ttl"><?php echo $value5['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value5['id']; ?>"><?php echo $value5['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value5['user']; ?> </a></li>
-                        <li class="date"><?php echo $value5['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value5['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-                
-
-
-            </div>
-            <div class="main-content tab-pane" id="wenjiao">
-                <h1>文教</h1>
-
-
-
-                <?php foreach ($list6 as $key6 => $value6) { ?>
-
-                <div class="post_item">
-                        <img src="images/blog1.jpg" alt="blog">
-                        <a href="category.php" class="category-ttl"><?php echo $value6['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value6['id']; ?>"><?php echo $value6['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value6['user']; ?> </a></li>
-                        <li class="date"><?php echo $value6['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value6['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-                
-
-
-
-            </div>
-            <div class="main-content tab-pane" id="tiyu">
-                <h1>体育</h1>
-
-
-
-                <?php foreach ($list7 as $key7 => $value7) { ?>
-
-                <div class="post_item">
-                        <img src="images/blog1.jpg" alt="blog">
-                        <a href="category.php" class="category-ttl"><?php echo $value7['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value7['id']; ?>"><?php echo $value7['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value7['user']; ?> </a></li>
-                        <li class="date"><?php echo $value7['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value7['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-                
-
-
-
-            </div>
-            <div class="main-content tab-pane" id="shehui">
-                <h1>社会</h1>
-
-
-
-                <?php foreach ($list8 as $key8 => $value8) { ?>
-
-                <div class="post_item">
-                        <img src="images/blog1.jpg" alt="blog">
-                        <a href="category.php" class="category-ttl"><?php echo $value8['leibie']; ?></a>
-                    <div class="shared-sec right">
-                        <ul>
-                            <li> 分享 ：</li>
-                            <li><a href="#"><span class="fab fa-facebook"></span></a></li>
-                            <li><a href="#"><span class="fab fa-instagram"></span></a></li>    
-                            <li><a href="#"><span class="fab fa-twitter"></span></a></li>
-                            <li><a href="#"><span class="fab fa-pinterest"></span></a></li>
-                            <li><a href="#"><span class="fab fa-google-plus-g"></span></a></li>    
-                        </ul>   
-                    </div>
-                    <h2><a href="post.php?id=<?php echo $value8['id']; ?>"><?php echo $value8['title']; ?></a></h2>
-                    <ul class="post-tools">
-                        <li class="admin"><a href="#"><?php echo $value8['user']; ?> </a></li>
-                        <li class="date"><?php echo $value8['regtime']; ?></li>
-                    </ul>
-                    <h6><?php echo $value8['jianjie']; ?></h6>  
-                </div>
-
-                <?php } ?>
-                
-
-
-
-            </div>
-            <aside class="aside-sec">
-                <div class="ads-sec">
-                    <h2>广告</h2>
-                    <img src="images/600-ad.jpg" alt="ad">
-                </div>
-
-            </aside>
         </div>
     </section>
-<footer>
 
-        <div class="footer_copyright">
+    <!-- 分类内容区域 -->
+    <section class="category-content">
+        <div class="container">
+            <div class="tab-content">
+                <?php foreach ($categories as $cat): ?>
+                <?php $catList = getList('wen', "pinglun=1 AND leibie='{$cat['name']}'", 6, 0); ?>
+                <div id="<?php echo $cat['id']; ?>" class="tab-pane fade">
+                    <div class="section-header">
+                        <h2><i class="<?php echo $cat['icon']; ?>"></i> <?php echo $cat['name']; ?>资讯</h2>
+                        <span class="article-count">共 <?php echo count($catList); ?> 篇文章</span>
+                    </div>
+                    
+                    <div class="row">
+                        <?php foreach ($catList as $item): ?>
+                        <div class="col-lg-4 col-md-6 mb-4">
+                            <article class="article-card">
+                                <div class="article-thumb">
+                                    <div class="no-image-placeholder">
+                                        <i class="fas fa-newspaper"></i>
+                                    </div>
+                                    <span class="article-category"><?php echo htmlspecialchars($item['leibie']); ?></span>
+                                </div>
+                                <div class="article-content">
+                                    <h3 class="article-title">
+                                        <a href="post.php?id=<?php echo $item['id']; ?>">
+                                            <?php echo htmlspecialchars($item['title']); ?>
+                                        </a>
+                                    </h3>
+                                    <p class="article-excerpt">
+                                        <?php echo htmlspecialchars(mb_substr($item['jianjie'] ?? '暂无简介', 0, 60, 'utf-8')); ?>...
+                                    </p>
+                                    <div class="article-footer">
+                                        <span class="article-author">
+                                            <i class="fas fa-user-circle"></i>
+                                            <?php echo htmlspecialchars($item['user']); ?>
+                                        </span>
+                                        <span class="article-date">
+                                            <i class="fas fa-calendar-alt"></i>
+                                            <?php echo $item['regtime']; ?>
+                                        </span>
+                                    </div>
+                                </div>
+                            </article>
+                        </div>
+                        <?php endforeach; ?>
+                    </div>
+
+                    <?php if (empty($catList)): ?>
+                    <div class="empty-state">
+                        <i class="fas fa-folder-open"></i>
+                        <p>该分类暂无文章</p>
+                    </div>
+                    <?php endif; ?>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="modern-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h3><i class="fas fa-newspaper"></i> News Platform</h3>
+                        <p>专业的新闻资讯平台，为您提供最新、最快、最全面的新闻报道。我们的使命是让每个人都能方便地获取真实、有价值的新闻信息。</p>
+                        <div class="social-links">
+                            <a href="#"><i class="fab fa-weixin"></i></a>
+                            <a href="#"><i class="fab fa-weibo"></i></a>
+                            <a href="#"><i class="fab fa-qq"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h3>快速链接</h3>
+                        <ul>
+                            <li><a href="index.php"><i class="fas fa-chevron-right"></i> 首页</a></li>
+                            <li><a href="list.php"><i class="fas fa-chevron-right"></i> 资讯列表</a></li>
+                            <li><a href="category.php"><i class="fas fa-chevron-right"></i> 分类</a></li>
+                            <li><a href="contact.php"><i class="fas fa-chevron-right"></i> 联系我们</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h3>分类</h3>
+                        <ul>
+                            <li><a href="#keji"><i class="fas fa-chevron-right"></i> 科技资讯</a></li>
+                            <li><a href="#jingji"><i class="fas fa-chevron-right"></i> 财经新闻</a></li>
+                            <li><a href="#tiyu"><i class="fas fa-chevron-right"></i> 体育报道</a></li>
+                            <li><a href="#shehui"><i class="fas fa-chevron-right"></i> 社会热点</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-widget">
+                        <h3>联系方式</h3>
+                        <ul class="contact-info">
+                            <li><i class="fas fa-map-marker-alt"></i> 中国 北京市</li>
+                            <li><i class="fas fa-phone"></i> +86 188-XXXX-XXXX</li>
+                            <li><i class="fas fa-envelope"></i> contact@news-platform.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
             <div class="container">
                 <div class="row">
-                    <div class="col-lg-6 col-md-4 logo-side">
-                        <img src="images/logo.png" alt="logo">
+                    <div class="col-md-6">
+                        <p>&copy; <?php echo date('Y'); ?> News Platform. 保留所有权利.</p>
                     </div>
-                    <div class="col-lg-6 col-md-8">
-                        <ul class="footer-menu">
-                            <li>
-                                <a href="index.php">首页</a>
-                            </li>
-                            <li>
-                                <a href="list.php">列表</a>
-                            </li>
-                            <li>
-                                <a href="category.php">类别</a>
-                            </li>
-                            <li>
-                                <a href="boke.php">博客</a>
-                            </li>
-                            <li>
-                                <a href="contact.php">联系</a>
-                            </li>
-                        </ul>
-                        <h5 class="copy-right">版权 &copy; 2018.公司名称 保留所有权利。</h5>
+                    <div class="col-md-6 text-right">
+                        <p>Powered by PHP <?php echo PHP_VERSION; ?> | v<?php echo APP_VERSION; ?></p>
                     </div>
                 </div>
             </div>
         </div>
     </footer>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
     <script type="text/javascript" src="js/jquery.js"></script>
-    <script type="text/javascript" src="js/bootstrap.min.js">
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function(){
+        $('.nav-tabs a:first').tab('show');
+        $('a[data-toggle="tab"]').on('shown.bs.tab', function(e) {
+            var target = $(e.target).attr('href');
+            if (target) {
+                $('html, body').animate({
+                    scrollTop: $(target).offset().top - 100
+                }, 300);
+            }
+        });
+    });
+
+    window.addEventListener('scroll', function() {
+        const btn = document.getElementById('backToTop');
+        if (window.scrollY > 300) {
+            btn.classList.add('show');
+        } else {
+            btn.classList.remove('show');
+        }
+    });
+    document.getElementById('backToTop').addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
     </script>
-    <script defer src="js/all.js"></script>
-    <script type="text/javascript" src="js/custom.js"></script>
 </body>
-<script>
-    $(".lei>.nav-tabs li").click(function(){
-        // var biao=$(".lei>.nav-tabs li").index();
-        $(this).addClass("bg").siblings().removeClass("bg");
-    })
-</script>
 </html>

@@ -77,7 +77,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     ]);
 
     // 跳转到首页
-    Response::alert('登录成功', '../index.php');
+    Response::alert('登录成功', 'index.php');
 }
 ?>
 <!DOCTYPE html>
@@ -87,53 +87,63 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>管理员登录 - <?php echo APP_NAME; ?></title>
     <link href="style/authority/login_css.css" rel="stylesheet" type="text/css">
-    <style>
-        .error-tip {
-            color: #e74c3c;
-            font-size: 12px;
-            margin-top: 5px;
-            display: none;
-        }
-        .input-error { border-color: #e74c3c !important; }
-        .login-loading {
-            display: none;
-            text-align: center;
-            margin-top: 10px;
-            color: #667eea;
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <div id="login_center">
         <div id="login_area">
+            <div class="login-left">
+                <div class="login-brand">
+                    <h1><i class="fas fa-newspaper"></i> News Platform</h1>
+                    <p>专业的新闻管理平台，助力内容创作与发布</p>
+                </div>
+                <div class="login-features">
+                    <h3>平台特色</h3>
+                    <ul>
+                        <li><i class="fas fa-shield-alt"></i> 安全可靠的登录验证</li>
+                        <li><i class="fas fa-chart-line"></i> 数据统计实时分析</li>
+                        <li><i class="fas fa-mobile-alt"></i> 响应式界面设计</li>
+                        <li><i class="fas fa-lock"></i> 严格的权限管理</li>
+                    </ul>
+                </div>
+            </div>
             <div id="login_box">
                 <div id="login_form">
+                    <div class="login-header">
+                        <h2>欢迎回来</h2>
+                        <p>请输入您的账号信息登录系统</p>
+                    </div>
                     <form id="submitForm" method="post" autocomplete="off">
                         <?php echo Security::csrfField(); ?>
                         <div id="login_tip2">
-                            <span id="login_err" class="sty_txt2"><?php echo Response::getFlash(); ?></span>
+                            <?php if (Response::getFlash()): ?>
+                            <span id="login_err"><?php echo Response::getFlash(); ?></span>
+                            <?php endif; ?>
                         </div>
-                        <div>
-                            <label for="name">账&nbsp;&nbsp;&nbsp;&nbsp;号：</label>
+                        <div class="form-group">
+                            <label for="name">账号</label>
                             <input type="text" name="uid" class="username" id="name"
                                    required minlength="3" maxlength="20"
                                    pattern="[a-zA-Z0-9_]{3,20}"
                                    placeholder="请输入账号">
                             <div class="error-tip" id="uid-error">账号格式：3-20位字母数字下划线</div>
                         </div>
-                        <div>
-                            <label for="pwd">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label>
+                        <div class="form-group">
+                            <label for="pwd">密码</label>
                             <input type="password" name="password" class="pwd" id="pwd"
                                    required minlength="6" maxlength="30"
                                    placeholder="请输入密码">
                             <div class="error-tip" id="pwd-error">密码长度：6-30位</div>
                         </div>
                         <div id="btn_area">
-                            <button type="submit" class="login_btn" id="login_sub">登&nbsp;&nbsp;录</button>
-                            <button type="button" class="login_btn" id="login_ret">注&nbsp;&nbsp;册</button>
+                            <button type="submit" class="login_btn" id="login_sub"><i class="fas fa-sign-in-alt"></i> 登录</button>
+                            <button type="button" class="login_btn" id="login_ret"><i class="fas fa-user-plus"></i> 注册</button>
                         </div>
-                        <div class="login-loading" id="loading">登录中...</div>
+                        <div class="login-loading" id="loading"><i class="fas fa-spinner fa-spin"></i> 登录中...</div>
                     </form>
+                    <div class="login-footer">
+                        <p>测试账号：<strong>123456</strong> / 密码：<strong>123456</strong></p>
+                    </div>
                 </div>
             </div>
         </div>

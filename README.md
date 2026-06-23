@@ -1,264 +1,393 @@
-# News Platform
+# News Platform - 现代化新闻资讯平台
 
-[![版本](https://img.shields.io/badge/版本-1.2.0-blue.svg)](https://github.com/Hermitweb/php)
-[![许可证](https://img.shields.io/badge/许可证-MIT-green.svg)](LICENSE)
-[![PHP版本](https://img.shields.io/badge/PHP-8.2%2B-purple.svg)](https://www.php.net/)
-[![MySQL版本](https://img.shields.io/badge/MySQL-8.0%2B-orange.svg)](https://www.mysql.com/)
-
-一个基于PHP+MySQL的现代化新闻内容管理平台，包含前台展示和后台管理功能。
-
-## 📋 版本信息
-
-- **当前版本**: 1.2.0
-- **稳定版本**: 1.0.0 (已封存)
-- **发布日期**: 2026-06-23
-- **最后更新**: 2026-06-23
-
-查看完整的版本更新历史：[CHANGELOG.md](CHANGELOG.md)
-
-## ✨ 功能特点
-
-### 后台管理功能
-- 📰 新闻发布与管理
-- 👥 用户权限管理
-- 🔐 管理员登录系统
-- 📊 数据统计与分页
-- 🎨 响应式界面设计
-
-### 前端展示功能
-- 🏠 新闻首页展示
-- 📂 新闻分类浏览
-- 📝 新闻列表查看
-- 📄 新闻详情阅读
-- 📞 联系我们页面
-
-### 技术特性
-- 🐳 Docker容器化部署
-- 📦 模拟数据库支持
-- 🚀 自动化启动脚本
-- 📚 完善的项目文档
-- 🔧 Git版本管理
-
-## 🛠️ 技术栈
-
-| 类别 | 技术 |
-|------|------|
-| **后端** | PHP 7.4+ |
-| **数据库** | MySQL 5.7+ |
-| **前端UI** | Layui框架 |
-| **前端框架** | Bootstrap 4 |
-| **JavaScript** | jQuery |
-| **容器化** | Docker |
-
-## 🚀 快速开始
-
-### 方法一：使用启动脚本（推荐）
-
-1. 确保已安装PHP和MySQL：
-   ```bash
-   # Ubuntu/Debian
-   sudo apt install php php-mysql mysql-client
-   
-   # CentOS/RHEL
-   sudo yum install php php-mysql mysql
-   ```
-
-2. 运行启动脚本：
-   ```bash
-   ./start.sh
-   ```
-
-3. 访问系统：
-   - **前端**: http://localhost:8001
-   - **后台**: http://localhost:8000/log/login.php
-
-### 方法二：使用Docker
-
-1. 确保已安装Docker和Docker Compose
-
-2. 启动服务：
-   ```bash
-   docker-compose up -d
-   ```
-
-3. 访问系统：
-   - **前端**: http://localhost:8080
-   - **后台**: http://localhost:8080/admin/
-
-### 方法三：手动配置
-
-1. 创建数据库：
-   ```bash
-   mysql -u root -p
-   CREATE DATABASE db_news CHARACTER SET utf8 COLLATE utf8_general_ci;
-   ```
-
-2. 导入数据：
-   ```bash
-   mysql -u root -p db_news < db_news.sql
-   ```
-
-3. 配置数据库连接：
-   编辑 `admin/int.php` 和 `web/int.php` 文件，修改数据库配置：
-   ```php
-   $db_host="localhost";
-   $db_user="root";
-   $db_password="your_password";
-   $db_name="db_news";
-   ```
-
-4. 启动Web服务器：
-   ```bash
-   # 后台管理
-   cd admin && php -S localhost:8000
-   
-   # 前端展示
-   cd web && php -S localhost:8001
-   ```
-
-## 🔐 默认登录信息
-
-| 角色 | 账号 | 密码 |
-|------|------|------|
-| 管理员 | 123456 | 123456 |
-| 管理员 | 666666 | 666666 |
-
-⚠️ **注意**: 生产环境请务必修改默认密码！
-
-## 📁 项目结构
-
-```
-php/
-├── admin/                  # 后台管理目录
-│   ├── index.php          # 后台首页
-│   ├── log/login.php      # 登录页面
-│   ├── fabu.php           # 发布文章
-│   ├── caozuo.php         # 文章操作
-│   ├── user.php           # 用户管理
-│   ├── int.php            # 数据库配置
-│   ├── db.php             # 数据库操作函数
-│   └── layui/             # Layui框架文件
-│
-├── web/                    # 前端展示目录
-│   ├── index.php          # 前端首页
-│   ├── list.php           # 新闻列表
-│   ├── category.php       # 新闻分类
-│   ├── post.php           # 新闻详情
-│   ├── contact.php        # 联系页面
-│   ├── css/               # 样式文件
-│   ├── js/                # JavaScript文件
-│   └── images/            # 图片资源
-│
-├── mock_db.php            # 模拟数据库
-├── db_news.sql            # 数据库文件
-├── Dockerfile             # Docker配置
-├── docker-compose.yml     # Docker Compose配置
-├── start.sh               # 启动脚本
-│
-├── VERSION                # 版本信息
-├── CHANGELOG.md           # 更新日志
-├── CONTRIBUTING.md        # 贡献指南
-├── LICENSE                # MIT许可证
-└── README.md              # 项目说明
-```
-
-## 💾 数据库表结构
-
-| 表名 | 说明 | 主要字段 |
-|------|------|---------|
-| `tb_admin` | 管理员表 | id, name, uid, password, phone |
-| `tb_user` | 用户表 | id, uid, password, email, phone |
-| `tb_wen` | 文章表 | id, title, content, user, leibie |
-
-## 🌐 访问地址
-
-### 前端展示页面
-| 页面 | 地址 |
-|------|------|
-| 首页 | http://localhost:8001 |
-| 列表页 | http://localhost:8001/list.php |
-| 分类页 | http://localhost:8001/category.php |
-| 详情页 | http://localhost:8001/post.php?id=1 |
-| 联系页 | http://localhost:8001/contact.php |
-
-### 后台管理页面
-| 页面 | 地址 |
-|------|------|
-| 登录页 | http://localhost:8000/log/login.php |
-| 后台首页 | http://localhost:8000/index.php |
-| 文章管理 | http://localhost:8000/caozuo.php |
-| 发布文章 | http://localhost:8000/fabu.php |
-| 用户管理 | http://localhost:8000/i-user.php |
-
-## ⚠️ 注意事项
-
-1. ✅ 确保PHP已安装mysqli扩展
-2. ✅ MySQL默认用户名和密码都是root
-3. ⚠️ 生产环境请修改默认密码
-4. 💡 建议使用Apache或Nginx作为生产服务器
-5. 🔒 注意数据库安全配置
-
-## 🔧 常见问题
-
-### 数据库连接失败
-- 检查MySQL服务是否启动
-- 确认数据库用户名和密码正确
-- 验证数据库是否已创建
-- 使用模拟数据库进行测试
-
-### 页面无法访问
-- 检查Web服务器是否正常运行
-- 确认防火墙设置
-- 验证端口是否被占用
-
-### 登录失败
-- 确认账号密码正确
-- 检查数据库连接状态
-- 查看浏览器控制台错误信息
-
-## 📖 文档
-
-- [更新日志](CHANGELOG.md) - 版本更新历史
-- [贡献指南](CONTRIBUTING.md) - 如何参与开发
-- [许可证](LICENSE) - MIT开源协议
-
-## 🤝 贡献
-
-欢迎参与项目开发！请查看 [贡献指南](CONTRIBUTING.md) 了解详情。
-
-### 开发分支
-- `master` - 主分支（稳定版本）
-- `develop-v1.2` - 开发分支（当前开发版本）
-
-## 📜 许可证
-
-本项目采用 [MIT许可证](LICENSE)，详见LICENSE文件。
-
-## 📞 支持
-
-如有问题或建议，请通过以下方式联系：
-
-- 📧 Email: admin@news-platform.com
-- 🐛 GitHub Issues: 提交问题报告
-- 💬 项目文档: 查看详细说明
-
-## 🎯 开发计划
-
-### v1.2.0 (已发布)
-- ✅ 模拟数据库支持
-- ✅ Docker容器化部署
-- ✅ 完善项目文档
-- 🔄 优化用户界面
-- 🔄 增强安全性
-- 🔄 添加更多功能
-
-### 未来版本
-- 🔮 RESTful API接口
-- 🔮 移动端适配
-- 🔮 多语言支持
-- 🔮 性能优化
-- 🔮 更多管理功能
+> 专业的新闻资讯管理系统，提供完整的前后端功能
 
 ---
 
-**感谢使用News Platform！** 🎉
+## 项目简介
+
+News Platform 是一个基于 PHP + MySQL 构建的现代化新闻资讯管理平台，具备完整的内容管理和前端展示功能。
+
+### 功能特性
+
+#### 前端展示
+- 📰 **新闻首页** - 英雄区域、头条推荐、最新资讯、热门文章
+- 📋 **资讯列表** - 文章列表、搜索功能、分类筛选、加载更多
+- 🏷️ **分类导航** - 8大分类（政治、经济、法律、军事、科技、文教、体育、社会）
+- 📝 **文章详情** - 文章内容、评论区、相关文章推荐
+- 📧 **联系我们** - 联系方式、留言表单
+
+#### 后台管理
+- 📊 **仪表盘** - 数据统计、图表展示、作者排行榜
+- 📝 **文章管理** - 发布、编辑、删除、热门设置、评论控制
+- 👥 **用户管理** - 用户列表、详情查看、状态管理
+- 🔐 **管理员管理** - 管理员列表、权限管理
+- 👤 **个人中心** - 个人资料、安全设置
+- ⚙️ **系统设置** - 系统配置、参数管理
+
+### 技术栈
+
+| 分类 | 技术 | 版本 |
+|------|------|------|
+| 后端 | PHP | 7.4+ |
+| 数据库 | MySQL | 5.7+ |
+| 前端框架 | Bootstrap | 4.x |
+| 图标库 | Font Awesome | 6.4.0 |
+| 容器化 | Docker | 20.x |
+| 版本控制 | Git | 2.x |
+
+---
+
+## 快速开始
+
+### 环境要求
+
+- PHP 7.4 或更高版本
+- MySQL 5.7 或更高版本
+- Apache/Nginx 或 PHP 内置服务器
+- Git
+
+### 本地开发
+
+#### 方式一：PHP 内置服务器（推荐）
+
+```bash
+# 克隆项目
+git clone <repository-url>
+cd php
+
+# 启动服务器
+php -S localhost:8000
+
+# 访问地址
+# 前端首页: http://localhost:8000/web/index.php
+# 后台登录: http://localhost:8000/admin/log/login.php
+```
+
+#### 方式二：Docker（推荐用于生产环境）
+
+```bash
+# 启动容器
+docker-compose up -d
+
+# 访问地址
+# 前端首页: http://localhost:8000/web/index.php
+# 后台登录: http://localhost:8000/admin/log/login.php
+```
+
+### 默认账号
+
+| 角色 | 用户名 | 密码 | 说明 |
+|------|--------|------|------|
+| 管理员 | `123456` | `123456` | 后台管理账号 |
+
+---
+
+## 部署流程
+
+### 1. 环境准备
+
+#### Linux 服务器
+
+```bash
+# 更新系统
+sudo apt update && sudo apt upgrade -y
+
+# 安装 PHP 和扩展
+sudo apt install -y php7.4 php7.4-mysql php7.4-mbstring php7.4-curl php7.4-gd php7.4-xml
+
+# 安装 MySQL
+sudo apt install -y mysql-server
+
+# 安装 Nginx
+sudo apt install -y nginx
+```
+
+#### Windows 环境
+
+- 下载并安装 [XAMPP](https://www.apachefriends.org/index.html)
+- 或使用 [WAMP](https://www.wampserver.com/)
+
+### 2. 数据库配置
+
+#### 创建数据库
+
+```sql
+-- 创建数据库
+CREATE DATABASE news_platform CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+-- 创建用户并授权
+CREATE USER 'news_user'@'localhost' IDENTIFIED BY 'your_password';
+GRANT ALL PRIVILEGES ON news_platform.* TO 'news_user'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+#### 导入数据
+
+项目使用模拟数据库（mock_db.php），首次访问时会自动初始化示例数据。
+
+### 3. 配置文件
+
+复制并修改配置文件：
+
+```bash
+cp includes/config.example.php includes/config.php
+```
+
+编辑 `includes/config.php`：
+
+```php
+<?php
+return [
+    'database' => [
+        'host' => 'localhost',
+        'port' => 3306,
+        'name' => 'news_platform',
+        'username' => 'news_user',
+        'password' => 'your_password',
+        'charset' => 'utf8mb4'
+    ],
+    'app' => [
+        'name' => 'News Platform',
+        'version' => '1.2.0',
+        'debug' => false,
+        'timezone' => 'Asia/Shanghai'
+    ],
+    'security' => [
+        'csrf_protection' => true,
+        'session_timeout' => 3600,
+        'login_attempts_limit' => 5
+    ]
+];
+```
+
+### 4. Nginx 配置
+
+创建站点配置文件 `/etc/nginx/sites-available/news-platform.conf`：
+
+```nginx
+server {
+    listen 80;
+    server_name your-domain.com;
+    root /var/www/news-platform;
+    index index.php index.html;
+
+    # 前端页面
+    location /web/ {
+        try_files $uri $uri/ /web/index.php?$args;
+    }
+
+    # 后台管理
+    location /admin/ {
+        try_files $uri $uri/ /admin/index.php?$args;
+    }
+
+    # PHP 处理
+    location ~ \.php$ {
+        include snippets/fastcgi-php.conf;
+        fastcgi_pass unix:/run/php/php7.4-fpm.sock;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+        include fastcgi_params;
+    }
+
+    # 静态资源缓存
+    location ~* \.(css|js|png|jpg|jpeg|gif|ico|svg)$ {
+        expires 1y;
+        add_header Cache-Control "public, immutable";
+    }
+
+    # 安全配置
+    add_header X-Content-Type-Options nosniff;
+    add_header X-Frame-Options SAMEORIGIN;
+    add_header X-XSS-Protection "1; mode=block";
+}
+```
+
+启用站点：
+
+```bash
+sudo ln -s /etc/nginx/sites-available/news-platform.conf /etc/nginx/sites-enabled/
+sudo nginx -t
+sudo systemctl reload nginx
+```
+
+### 5. SSL 配置（可选）
+
+使用 Let's Encrypt 配置 HTTPS：
+
+```bash
+# 安装 Certbot
+sudo apt install -y certbot python3-certbot-nginx
+
+# 申请证书
+sudo certbot --nginx -d your-domain.com
+
+# 自动续期
+sudo certbot renew --dry-run
+```
+
+---
+
+## 使用说明
+
+### 前端功能
+
+1. **浏览新闻**
+   - 访问首页查看头条新闻和推荐内容
+   - 使用搜索框搜索感兴趣的新闻
+   - 通过分类导航浏览不同类别的资讯
+
+2. **阅读文章**
+   - 点击文章标题进入详情页
+   - 查看文章内容、作者信息和发布时间
+   - 在评论区发表评论
+
+3. **订阅资讯**
+   - 在侧边栏输入邮箱订阅新闻推送
+
+### 后台管理
+
+1. **登录系统**
+   - 访问 `/admin/log/login.php`
+   - 使用管理员账号登录
+
+2. **文章管理**
+   - 在仪表盘查看数据统计
+   - 发布新文章：填写标题、作者、分类、内容等信息
+   - 编辑或删除已有文章
+   - 设置文章为热门或禁止评论
+
+3. **用户管理**
+   - 查看用户列表和详情
+   - 管理用户状态
+
+4. **系统设置**
+   - 修改个人资料
+   - 更新密码
+   - 配置系统参数
+
+---
+
+## 项目结构
+
+```
+php/                              # 项目根目录
+├── admin/                        # 后台管理系统
+│   ├── caozuo.php                # 文章管理页面
+│   ├── dashboard.php             # 仪表盘页面
+│   ├── fabu.php                  # 发布文章页面
+│   ├── i-user.php                # 用户管理页面
+│   ├── index.php                 # 后台首页
+│   ├── profile.php               # 个人中心页面
+│   ├── settings.php              # 系统设置页面
+│   ├── user.php                  # 管理员列表页面
+│   ├── user_x.php                # 用户详情页面
+│   ├── xiugai.php                # 修改文章页面
+│   ├── css/                      # 后台样式文件
+│   │   ├── dashboard.css         # 仪表盘样式
+│   │   ├── index.css             # 全局样式
+│   │   └── profile.css           # 个人中心样式
+│   ├── js/                       # 后台脚本文件
+│   └── log/                      # 登录/注册目录
+│       ├── login.php             # 登录页面
+│       └── reg.php               # 注册页面
+├── includes/                     # 核心类库
+│   ├── bootstrap.php             # 初始化文件
+│   ├── Logger.php                # 日志类
+│   ├── Response.php              # 响应处理类
+│   ├── Security.php              # 安全类
+│   └── ErrorHandler.php          # 错误处理类
+├── web/                          # 前端展示页面
+│   ├── index.php                 # 前端首页
+│   ├── list.php                  # 资讯列表页面
+│   ├── category.php              # 分类页面
+│   ├── post.php                  # 文章详情页面
+│   ├── contact.php               # 联系我们页面
+│   ├── int.php                   # 前端初始化文件
+│   ├── css/                      # 前端样式文件
+│   │   ├── bootstrap.min.css     # Bootstrap 样式
+│   │   ├── style.css             # 基础样式
+│   │   ├── home-modern.css       # 首页样式
+│   │   └── post-modern.css       # 文章详情样式
+│   └── js/                       # 前端脚本文件
+├── mock_db.php                   # 模拟数据库（开发用）
+├── docker-compose.yml            # Docker Compose 配置
+├── Dockerfile                    # Docker 镜像配置
+└── README.md                     # 项目说明文档
+```
+
+---
+
+## 安全特性
+
+- ✅ **CSRF 防护** - 跨站请求伪造防护
+- ✅ **密码加密** - 使用 password_hash 加密存储
+- ✅ **登录频率限制** - 防止暴力破解
+- ✅ **XSS 过滤** - 跨站脚本攻击防护
+- ✅ **Session 安全** - HttpOnly、Session 固定攻击防护
+- ✅ **输入验证** - 所有用户输入进行过滤和验证
+- ✅ **安全 HTTP 头** - X-Content-Type-Options、X-Frame-Options、X-XSS-Protection
+
+---
+
+## 开发指南
+
+### 代码规范
+
+- 使用 PSR-4 自动加载规范
+- 使用 camelCase 命名变量和函数
+- 使用 PascalCase 命名类
+- 缩进使用 4 个空格
+- 文件编码使用 UTF-8
+
+### 添加新功能
+
+1. 在 `includes/` 目录创建新类
+2. 在 `admin/` 或 `web/` 目录创建页面
+3. 在对应的 CSS 文件中添加样式
+4. 更新 `mock_db.php` 添加数据模型
+
+### 测试
+
+```bash
+# 运行 PHP 语法检查
+php -l *.php
+
+# 运行单元测试（如果有）
+phpunit tests/
+```
+
+---
+
+## 贡献指南
+
+欢迎提交 Issue 和 Pull Request！
+
+### 提交规范
+
+- **feat**: 新功能
+- **fix**: 修复 bug
+- **docs**: 更新文档
+- **style**: 代码格式（不影响功能）
+- **refactor**: 重构（既不是新功能也不是修复）
+- **test**: 添加测试
+- **chore**: 构建/工具更新
+
+---
+
+## 许可证
+
+MIT License
+
+---
+
+## 联系方式
+
+- 📧 邮箱：contact@news-platform.com
+- 🌐 官网：https://www.news-platform.com
+- 📍 地址：中国北京市朝阳区建国路88号
+
+---
+
+**Version**: 1.2.0  
+**Last Updated**: June 2026
