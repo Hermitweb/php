@@ -10,10 +10,10 @@ class MockDB {
     }
     
     private function initMockData() {
-        // 管理员数据
+        // 管理员数据 - 使用password_hash加密
         $this->data['admin'] = [
-            ['id' => 1, 'name' => 'admin', 'uid' => '123456', 'password' => 'e10adc3949ba59abbe56e057f20f883e', 'phone' => '18894624507', 'regtime' => '2021-01-01 00:00:00', 'stutas' => 1],
-            ['id' => 2, 'name' => 'aaa', 'uid' => '666666', 'password' => 'f379eaf3c831b04de153469d1bec345e', 'phone' => '18894624507', 'regtime' => '2021-01-02 00:00:00', 'stutas' => 1],
+            ['id' => 1, 'name' => 'admin', 'uid' => '123456', 'password' => password_hash('123456', PASSWORD_DEFAULT), 'phone' => '18894624507', 'email' => 'admin@php-news.com', 'regtime' => '2021-01-01 00:00:00', 'lastlogin' => null, 'stutas' => 1],
+            ['id' => 2, 'name' => 'aaa', 'uid' => '666666', 'password' => password_hash('666666', PASSWORD_DEFAULT), 'phone' => '18894624507', 'email' => 'aaa@php-news.com', 'regtime' => '2021-01-02 00:00:00', 'lastlogin' => null, 'stutas' => 1],
         ];
         
         // 用户数据

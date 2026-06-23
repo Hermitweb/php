@@ -1,9 +1,10 @@
 <?php
-	// 使用模拟数据库
-	require_once(__DIR__ . '/../mock_db.php');
-	
-	define('PRE','tb_');
-	
-	// 模拟数据库已初始化
-	echo "<!-- 前端模拟数据库已加载 -->";
-?>
+/**
+ * 前端数据库初始化文件 v1.2
+ */
+
+require_once __DIR__ . '/../includes/bootstrap.php';
+
+if (!defined('PRE')) {
+    define('PRE', 'tb_');
+}
