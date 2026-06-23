@@ -1,0 +1,85 @@
+# PHP新闻管理系统 .gitignore
+
+# 操作系统生成的文件
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE和编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.settings/
+.buildpath
+
+# PHP相关
+*.log
+*.tmp
+*.bak
+*.cache
+
+# 临时文件
+tmp/
+temp/
+*.tmp.php
+
+# 配置文件（包含敏感信息）
+config.local.php
+db.local.php
+.env
+.env.local
+.env.*.local
+
+# 备份文件
+backup/
+*.sql.bak
+*.zip
+*.rar
+*.tar.gz
+
+# 上传文件（根据需要调整）
+uploads/
+upload/
+files/
+
+# 编译和缓存
+vendor/
+node_modules/
+bower_components/
+composer.phar
+
+# 测试和覆盖率
+tests/
+coverage/
+.phpunit.result.cache
+
+# 文档（可选）
+docs/
+*.pdf
+*.doc
+*.docx
+
+# 其他无功能文件夹
+php（无功能）/
+
+# Docker相关（可选）
+.docker/
+docker-compose.override.yml
+
+# 日志文件
+logs/
+*.log
+
+# 个人文件
+*.personal
+*.private
+使用事项.txt
+1902020074覃杰.docx
+php.rar
